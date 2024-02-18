@@ -1,0 +1,38 @@
+/ C++ code
+//
+int gas = 0;
+int buzz = 13;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(buzz, OUTPUT);
+  pinMode(7, OUTPUT);
+  
+  Serial.begin(9600); //Monitor serial
+}
+
+void loop()
+{
+  gas = analogRead(A0);
+  Serial.println(gas);
+  
+  //Rango
+  if (gas >= 100){
+    
+    //Yellow led on
+    digitalWrite(7, HIGH);
+    delay(1000); // Time ON
+    digitalWrite(7, LOW);
+    delay(500); // Time Off 
+    
+    //tone
+    tone(buzz, 1000);
+    delay(1000);
+    
+    noTone(buzz);
+    delay(500);
+    
+    
+}
+}
